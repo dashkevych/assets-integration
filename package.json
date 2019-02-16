@@ -1,0 +1,36 @@
+{
+    "name": "assets-integration",
+    "version": "1.0.0",
+    "description": "WordPress plugin",
+    "scripts": {
+        "start": "gulp"
+    },
+    "author": "Taras Dashkevych of Themes Harbor",
+    "license": "http://www.gnu.org/licenses/gpl-3.0.html GNU Public License",
+    "copyright": "Copyright (c) 2019, Dashko Studio LLC",
+    "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.2.0",
+        "autoprefixer": "^9.4.3",
+        "babelify": "^10.0.0",
+        "browser-sync": "^2.11.1",
+        "browserify": "^16.2.3",
+        "css-mqpacker": "^7.0.0",
+        "cssnano": "^4.1.8",
+        "del": "^3.0.0",
+        "gulp": "^4.0.0",
+        "gulp-babel": "^8.0.0-beta.2",
+        "gulp-merge-media-queries": "^0.2.1",
+        "gulp-postcss": "^8.0.0",
+        "gulp-rename": "^1.2.0",
+        "gulp-sass": "^4.0.1",
+        "gulp-sourcemaps": "^2.6.2",
+        "gulp-uglify": "^3.0.0",
+        "gulp-wp-pot": "^2.3.3",
+        "gulp-zip": "^4.2.0",
+        "mdn-polyfills": "^5.15.1",
+        "postcss-sort-alphabetically": "^1.1.1",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-source-stream": "^2.0.0"
+    }
+}

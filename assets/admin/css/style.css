@@ -1,0 +1,11 @@
+.bootstrap-settings table tr {
+    display: none;
+}
+
+.assets-settings .hide {
+    display: none;
+}
+
+.assets-settings .show {
+    display: block;
+}
