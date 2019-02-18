@@ -38,19 +38,36 @@ class BootstrapController {
         $this->settings = $this->getBootstrapSettings();
     }
 
+    /**
+	 * Registered all functionaliies needed for this controller.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
     public function register() {
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueueAssets' ] );
-        add_action( 'assets_integration_admin_assets_body', [ $this, 'tester' ] );
     }
     
+    /**
+	 * Enqueue assets.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
     public function enqueueAssets() {
+        // Load assets via CDN.
         if ( $this->isCdnDelivery() ) {
             $this->loadAssetsViaCdn();
 
             return;
         }
 
+        // Load assets locally.
+        if ( $this->isLocalDelivery() ) {
+            $this->loadAssetsLocally();
 
+            return;
+        }
     }
 
     /**
@@ -81,14 +98,24 @@ class BootstrapController {
 	 * @since 1.0.0
 	 * @return bool
 	 */
-    private function isLocalDelivery() {        
+    private function isLocalDelivery() {
+        if ( ! $this->settings['local_version'] ) {
+            return false;
+        }
+
         if ( empty( $this->settings['local_assets'] ) ) {
             return false;
         }
 
-        return isset( $this->settings['local_assets']['js'] );
+        return true;
     }
 
+    /**
+	 * Load assets via CDN. 
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
     private function loadAssetsViaCdn() {
         if ( empty( $this->settings['cdn_assets'] ) ) {
             return;
@@ -112,18 +139,26 @@ class BootstrapController {
         }
     }
 
+    /**
+	 * Load assets locally. 
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
     private function loadAssetsLocally() {
         foreach ( $this->settings['local_assets'] as $type => $isEnabled ) {
             switch ( $type ) {
                 case 'css':
+                    // Load local CSS asset based on the selected version.
                     if ( '' !== $isEnabled ) {
-                        echo 'load css';
+                        wp_enqueue_style( 'bootstrap-library-style', $this->getLocalResourcesURL( 'css', $this->settings['local_version'] ) );
                     }
 
                     break;
                 case 'js':
+                    // Load local JS asset based on the selected version.
                     if ( '' !== $isEnabled ) {
-                        echo 'load js';
+                        wp_enqueue_script( 'bootstrap-library-script', $this->getLocalResourcesURL( 'js', $this->settings['local_version'] ), array( 'jquery' ), esc_attr( $this->settings['local_version'] ), true );
                     }
 
                     break;
@@ -131,8 +166,23 @@ class BootstrapController {
         }
     }
 
-    public function tester() {
-        //var_dump( $this->isLocalDelivery() );
-        //echo '<br><pre>' . print_r( $this->loadAssetsLocally(), true ) . '</pre>';      
+    /**
+	 * Return local asset URL based on the selected type and version.
+	 *
+	 * @since 1.0.0
+     * @param string $type  Type of selected asset: CSS or JS
+     * @param string $version   Version of the selected asset
+	 * @return string
+	 */
+    public function getLocalResourcesURL( $type, $version ) {
+        $assetURL = ASSETS_INTEGRATION_PLUGIN_URL . 'resources/bootstrap/' . $version . '/' . $type . '/';
+
+        if ( 'css' === $type ) {
+            $assetFileName = 'bootstrap.min.css';
+        } else {
+            $assetFileName = 'bootstrap.bundle.min.js';
+        }
+
+        return esc_url( $assetURL . $assetFileName );
     }
 }
