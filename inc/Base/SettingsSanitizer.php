@@ -29,7 +29,7 @@ class SettingsSanitizer {
 	private $settings_structure = [];
 	
 	/**
-	 * Set up a sanitizer.
+	 * Set up at sanitizer.
 	 *
 	 * @since 1.0.0
 	 * @param object $settings
