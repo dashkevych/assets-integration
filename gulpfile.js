@@ -98,6 +98,13 @@ gulp.task( 'clean:repository:folder', function(done) {
 // These mulptiple tasks clean a distribution folder first and then add files.
 gulp.task( 'build:repository:folder', gulp.series( 'clean:repository:folder', 'create:repository:folder' ) );
 
+gulp.task( 'default', gulp.series( 
+    'create:pot',
+    'create:admin:js',
+    'build:distribution:folder',
+    'build:repository:folder'
+) );
+
 // Watch JS and CSS changes.
 gulp.task( 'watch', function() {
     gulp.watch( './src/admin/js/**/*.js', gulp.series( 'create:admin:js' ) );
