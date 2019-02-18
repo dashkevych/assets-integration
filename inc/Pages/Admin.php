@@ -268,7 +268,8 @@ class Admin {
                         'type' => 'select',
                         'options' => [
                             '' => esc_html__( 'None', 'assets-integration' ),
-                            '3.4' => '3.4',
+                            '3.4.x' => '3.4.x',
+                            '4.3.x' => '4.3.x',
                         ],
                     ],
 
