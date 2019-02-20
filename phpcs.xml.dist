@@ -43,6 +43,4 @@
             <property name="text_domain" type="array" value="assets-integration" />
         </properties>
     </rule>
-
-
 </ruleset>
