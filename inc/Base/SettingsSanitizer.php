@@ -39,29 +39,67 @@ class SettingsSanitizer {
     public function __construct( $settings, $settings_structure ) {
 		$this->settings = $settings;
         $this->settings_structure = $settings_structure;
-    }
-
-	public function input( $input, $type = 'text' ) {
-		if ( is_array( $input ) ) {
-			$sanitized_input = array();
-
-			foreach ( $input as $key => $value ) {
-				$key = sanitize_key( $key );
-
-				if ( 'url' === $type ) {
-					$sanitized_input[ $key ] = esc_url( $value );
-					continue;
-				}
-
-				$sanitized_input[ $key ] = sanitize_text_field( $value );
-			}
-
-			$input = $sanitized_input;
+	}
+	
+	/**
+	 * Sanitize the value by input type.
+	 *
+	 * @since 1.0.0
+	 * @param string $input (Value that needs to be sanitized).
+	 * @param string $type (Type of the input).
+	 * @return string
+	 */
+	private function sanitizeByInputType( $input, $type ) {
+		switch ( $type ) {
+			case 'url':
+				$input = esc_url( $input );
+				break;
+			case 'number':
+				$input = absint( $input );
+				break;
+			default:
+				$input = sanitize_text_field( $input );
 		}
 
 		return $input;
 	}
 
+	/**
+	 * Sanitize the input value.
+	 *
+	 * @since 1.0.0
+	 * @param string $input (Value that needs to be sanitized).
+	 * @param string $type (Type of the input).
+	 * @return array If there are group of options.
+	 * @return string If there is only one option.
+	 */
+	private function input( $input, $type = 'text' ) {
+		// We need to sanitize group of inputs.
+		if ( is_array( $input ) ) {
+			$sanitized_input = array();
+
+			foreach ( $input as $key => $value ) {
+				$key = sanitize_key( $key );
+				$sanitized_input[ $key ] = $this->sanitizeByInputType( $value, $type );
+			}
+
+			return $sanitized_input;
+		}
+
+		// We need to sanitize only one input element.
+		$input = $this->sanitizeByInputType( $input, $type );
+
+		return $input;
+	}
+
+	/**
+	 * Sanitize the checkbox values.
+	 *
+	 * @since 1.0.0
+	 * @param string $input (Value that needs to be sanitized).
+	 * @param string $type (Type of the input).
+	 * @return array
+	 */
 	private function checkbox( $input, $type = '' ) {
 		if ( is_array( $input ) ) {
 			$sanitized_input = array();
@@ -251,24 +289,27 @@ class SettingsSanitizer {
      */
 	private function settingsOptions( $input, $section, $tab ) {
 		$setting_types = $this->getRegisteredSettingsTypes( $section, $tab );
-
+	
 		foreach ( $setting_types as $key => $type ) {
+			// Check if the setting exists.
+			if ( ! isset( $input[ $section ][ $tab ][ $key ] ) ) {
+				continue;
+			}
+
+			// Sanitize the setting based on the type.
 			switch ( $type['type'] ) {
 				case 'input':
-
 					$input[ $section ][ $tab ][ $key ] = $this->input( $input[ $section ][ $tab ][ $key ], $type['subtype'] );
 
 					break;
 				
 				case 'checkbox':
-
 					$input[ $section ][ $tab ][ $key ] = $this->checkbox( $input[ $section ][ $tab ][ $key ], $type['subtype'] );
 
 					break;
 				
 				case 'radio':
 				case 'select':
-
 					// Alphanumeric characters, dashes, underscores, dots, colons and slashes are allowed.
 					$input[ $section ][ $tab ][ $key ] = preg_replace( '/[^a-zA-Z0-9_\-\.\:\/]/', '', $input[ $section ][ $tab ][ $key ] );
 
