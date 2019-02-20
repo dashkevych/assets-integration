@@ -41,11 +41,19 @@ class BootstrapController {
     /**
 	 * Registered all functionaliies needed for this controller.
 	 *
+     * @SuppressWarnings(PHPMD.ElseExpression)
+     * 
 	 * @since 1.0.0
 	 * @return void
 	 */
     public function register() {
-        add_action( 'wp_enqueue_scripts', [ $this, 'enqueueAssets' ] );
+        $default_settings = $this->getDefaultBootstrapSettings();
+
+        if ( $this->settings['priority'] && $default_settings['priority'] != $this->settings['priority'] ) {
+            add_action( 'wp_enqueue_scripts', [ $this, 'enqueueAssets' ], $this->settings['priority'] );
+        } else {
+            add_action( 'wp_enqueue_scripts', [ $this, 'enqueueAssets' ] );
+        }  
     }
     
     /**
@@ -78,6 +86,18 @@ class BootstrapController {
 	 */
     private function getBootstrapSettings() {
         $assets_settings = $this->settingsApi->getSettings( 'assets' );
+        
+        return $assets_settings['bootstrap'];
+    }
+
+    /**
+	 * Return default Bootstrap settings.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
+    private function getDefaultBootstrapSettings() {
+        $assets_settings = $this->settingsApi->getDefaultSettings( 'assets' );
         
         return $assets_settings['bootstrap'];
     }
@@ -168,7 +188,9 @@ class BootstrapController {
 
     /**
 	 * Return local asset URL based on the selected type and version.
-	 *
+	 * 
+     * @SuppressWarnings(PHPMD.ElseExpression)
+     * 
 	 * @since 1.0.0
      * @param string $type  Type of selected asset: CSS or JS
      * @param string $version   Version of the selected asset

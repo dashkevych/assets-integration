@@ -2,6 +2,8 @@
 import 'mdn-polyfills/Element.prototype.closest';
 
 document.addEventListener("DOMContentLoaded", function() {
+    // This looks very messy. Needs to be rewritten in the near future.
+    
     let bootstrapForm = document.getElementById( 'assets-settings-bootstrap' );
 
     if ( null === bootstrapForm ) {
@@ -10,7 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let assetDeliveryLocal = bootstrapForm.querySelector( '#assets_integration_settings_assets_bootstrap_is_cdn_' );
     let assetDeliveryCDN = bootstrapForm.querySelector( '#assets_integration_settings_assets_bootstrap_is_cdn_1' );
+    let assetPriority = bootstrapForm.querySelector( '#assets_integration_settings_assets_bootstrap_priority' );
+    
     assetDeliveryLocal.closest( 'tr' ).classList.add( 'show' );
+    assetPriority.closest( 'tr' ).classList.add( 'show' );
 
     let assetLocalVersion = bootstrapForm.querySelector( '#assets_integration_settings_assets_bootstrap_local_version' );
 

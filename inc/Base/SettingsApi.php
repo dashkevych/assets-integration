@@ -82,6 +82,7 @@ class SettingsApi {
                 'css' => '',
                 'js' => '',
             ],
+            'priority' => '10',
         ];
 
         // Default settings.

@@ -296,6 +296,14 @@ class Admin {
                             'js' => esc_html__( 'JavaScript URL', 'assets-integration' ),
                         ],
                     ],
+
+                    'priority' => [
+                        'id' => 'priority',
+                        'title' => esc_html__( 'Priority', 'assets-integration' ),
+                        'description' => esc_html__( 'Optional: This option is used to specify the order in which these assets are loaded on your site. Lower numbers correspond with earlier execution. Default is 10.', 'assets-integration' ),
+                        'type' => 'input',
+                        'subtype' => 'number',
+                    ],
                 ]
             ]
         ];
