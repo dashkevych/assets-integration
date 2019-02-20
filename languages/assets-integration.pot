@@ -1,0 +1,102 @@
+# Copyright (C) 2019 assets-integration
+# This file is distributed under the same license as the assets-integration package.
+msgid ""
+msgstr ""
+"Project-Id-Version: assets-integration\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: inc/Base/Activate.php:42
+msgid "Assets Integration plugin requires PHP version %1$s. You are running version %2$s. Please upgrade and try again."
+msgstr ""
+
+#: inc/Base/SettingsSanitizer.php:210
+msgid "%s section key is not defined in the plugin settings."
+msgstr ""
+
+#: inc/Base/SettingsSanitizer.php:224
+msgid "%s tab key is not defined in the plugin settings."
+msgstr ""
+
+#: inc/Base/SettingsSanitizer.php:238
+msgid "%s setting key is not defined in the plugin settings."
+msgstr ""
+
+#: inc/Base/SettingsSanitizer.php:368
+msgid "Settings updated."
+msgstr ""
+
+#: inc/Pages/Admin.php:166
+msgid "Assets Integration"
+msgstr ""
+
+#: inc/Pages/Admin.php:167
+msgid "Assets"
+msgstr ""
+
+#: inc/Pages/Admin.php:255
+msgid "Asset delivery"
+msgstr ""
+
+#: inc/Pages/Admin.php:256
+msgid "Select the way you want to load this asset."
+msgstr ""
+
+#: inc/Pages/Admin.php:266
+msgid "Version"
+msgstr ""
+
+#: inc/Pages/Admin.php:267
+msgid "Select a verion of the asset you want to use on your site."
+msgstr ""
+
+#: inc/Pages/Admin.php:270
+msgid "None"
+msgstr ""
+
+#: inc/Pages/Admin.php:278, inc/Pages/Admin.php:290
+msgid "Asset Type"
+msgstr ""
+
+#: inc/Pages/Admin.php:279
+msgid "Select asset type you want to load on your site."
+msgstr ""
+
+#: inc/Pages/Admin.php:283
+msgid "Load a CSS"
+msgstr ""
+
+#: inc/Pages/Admin.php:284
+msgid "Load a JavaScript"
+msgstr ""
+
+#: inc/Pages/Admin.php:291
+msgid "Enter URLs of CDN assets"
+msgstr ""
+
+#: inc/Pages/Admin.php:295
+msgid "CSS URL"
+msgstr ""
+
+#: inc/Pages/Admin.php:296
+msgid "JavaScript URL"
+msgstr ""
+
+#: inc/Pages/Admin.php:302
+msgid "Priority"
+msgstr ""
+
+#: inc/Pages/Admin.php:303
+msgid "Optional: This option is used to specify the order in which these assets are loaded on your site. Lower numbers correspond with earlier execution. Default is 10."
+msgstr ""
+
+#: inc/Pages/Admin.php:358
+msgid "Bootstrap"
+msgstr ""

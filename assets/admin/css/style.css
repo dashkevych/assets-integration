@@ -1,0 +1,12 @@
+.bootstrap-settings table tr,
+.assets-settings .hide {
+    display: none;
+}
+
+.assets-settings .show {
+    display: table-row;
+}
+
+.assets-settings .description {
+   max-width: 35rem; 
+}
