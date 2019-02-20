@@ -17,19 +17,19 @@ msgstr ""
 msgid "Assets Integration plugin requires PHP version %1$s. You are running version %2$s. Please upgrade and try again."
 msgstr ""
 
-#: inc/Base/SettingsSanitizer.php:172
+#: inc/Base/SettingsSanitizer.php:210
 msgid "%s section key is not defined in the plugin settings."
 msgstr ""
 
-#: inc/Base/SettingsSanitizer.php:186
+#: inc/Base/SettingsSanitizer.php:224
 msgid "%s tab key is not defined in the plugin settings."
 msgstr ""
 
-#: inc/Base/SettingsSanitizer.php:200
+#: inc/Base/SettingsSanitizer.php:238
 msgid "%s setting key is not defined in the plugin settings."
 msgstr ""
 
-#: inc/Base/SettingsSanitizer.php:327
+#: inc/Base/SettingsSanitizer.php:368
 msgid "Settings updated."
 msgstr ""
 
@@ -89,6 +89,14 @@ msgstr ""
 msgid "JavaScript URL"
 msgstr ""
 
-#: inc/Pages/Admin.php:350
+#: inc/Pages/Admin.php:302
+msgid "Priority"
+msgstr ""
+
+#: inc/Pages/Admin.php:303
+msgid "Optional: This option is used to specify the order in which these assets are loaded on your site. Lower numbers correspond with earlier execution. Default is 10."
+msgstr ""
+
+#: inc/Pages/Admin.php:358
 msgid "Bootstrap"
 msgstr ""
