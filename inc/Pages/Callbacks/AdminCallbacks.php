@@ -61,6 +61,10 @@ class AdminCallbacks {
                 $input_type = 'url';
                 $input_class = 'regular-text code';
                 break;
+            case 'number':
+                $input_type = 'number';
+                $input_class = 'small-text';
+                break;
             default:
                 $input_type = 'text';
                 $input_class = 'regular-text';
@@ -74,7 +78,7 @@ class AdminCallbacks {
 
         if ( empty( $args['options'] ) ) {
             printf(
-                '<input name="%1$s[%2$s][%3$s][%4$s]" class="%7$s" value="%5$s" type="%6$s">',
+                '<input id="%1$s_%2$s_%3$s_%4$s" name="%1$s[%2$s][%3$s][%4$s]" class="%7$s" value="%5$s" type="%6$s">',
                 $this->settings->getOptionName(),
                 $section_key,
                 $tab_key,
@@ -83,6 +87,8 @@ class AdminCallbacks {
                 $input_type,
                 $input_class
             );
+
+            $this->printDescription( $args['description'] );
 
             return;
         }
