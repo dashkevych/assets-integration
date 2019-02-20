@@ -12,7 +12,7 @@ The easiest way to load Bootstrap assets (JS & CSS) in WordPress.
 
 == Description ==
 
-Assets Integration is a plugin that allows to load additional assets on your WordPress site. Currently, the plugin supports only the Bootstrap framework. This web framework can be loaded it either locally or via CDN. It is also possible to specify which of the asset you want to load: CSS or JS or both.
+Assets Integration is a plugin that allows to load additional assets on your WordPress site. Currently, the plugin supports only the Bootstrap framework. This web framework can be loaded either locally or via CDN. It is also possible to specify which type of the asset you want to load: CSS or JS or both.
 
 = Bugs report =
 
@@ -40,4 +40,26 @@ Assets Integration can be installed in a few easy steps:
 
 Once the plugin is installed and activated, navigate to the Assets page in your WordPress dashbaord, and select the asset you want to load on your site.
 
+== Frequently Asked Questions ==
+
+= How do I load assets locally? =
+
+On the asset page in dashbaord, do the following: 
+
+1. Check the "Load assets locally" option in the Asset delivery section.
+2. Select a version of the asset you want to load on your site in the Version section.
+3. Select a type of the asset you want to load on your site in the Asset Type section. It can be either JavaScript, or CSS, or both.
+4. Click Save Changes to save your settings.
+
+= How do I load assets via CDN? =
+
+On the asset page in dashbaord, do the following: 
+
+1. Check the "Load assets via CDN" option in the Asset delivery section.
+2. Add URLs of the asset located on the CDN in the Asset Type section.
+4. Click Save Changes to save your settings.
+
 == Changelog ==
+
+= 1.0.0 =
+Initial release.
