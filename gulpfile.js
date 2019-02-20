@@ -63,7 +63,7 @@ gulp.task('create:admin:js', function () {
 // Create a distribution folder.
 gulp.task( 'create:distribution:folder', function() {
     return gulp.src( readyForReleaseFiles )
-        .pipe( gulp.dest( readyForReleaseFolder ) );
+        .pipe( gulp.dest( readyForReleaseFolder + '/' + slug ) );
 });
 
 // Remove files in a distribution folder.
