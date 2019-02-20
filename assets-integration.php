@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name: Assets Integration
- * Plugin URI: https://themesharbor.com
  * Description: The easiest way to load Bootstrap assets (JS & CSS) in WordPress.
  * Author: Taras Dashkevych
  * Author URI: https://themesharbor.com
